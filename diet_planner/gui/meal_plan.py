@@ -18,6 +18,6 @@ class MealPlan:
         self.meals = [meal for meal in self.meals if meal['name'] != name]
 
     def display_meals(self):
-        # Możesz dostosować sposób wyświetlania posiłków, na przykład, w oknie dialogowym
+
         meal_list = "\n".join([meal['name'] for meal in self.meals])
         QMessageBox.information(None, "Posiłki", f"Aktualne posiłki:\n{meal_list}")

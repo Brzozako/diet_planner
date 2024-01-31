@@ -12,7 +12,7 @@ class MainAppWindow(QMainWindow):
     def __init__(self):
         super(MainAppWindow, self).__init__()
         self.setupUi(self)
-        self.user_preferences = UserPreferences()  # Dodajemy obiekt UserPreferences
+        self.user_preferences = UserPreferences()
         self.initialize_modules()
 
     def setupUi(self, MainWindow):
@@ -86,12 +86,12 @@ class MainAppWindow(QMainWindow):
         weight = float(self.lineEdit_2.text())
         diet_plan = self.lineEdit_3.text()
 
-        # Zapisz informacje w instancji UserPreferences
+
         self.user_preferences.set_goals({'goal1': 2000, 'goal2': 100})
         self.user_preferences.set_user_data({'age': 25, 'gender': 'male', 'activity_level': 'moderate'})
         self.user_preferences.save_user_info(name, weight, diet_plan)
 
-        # Zapisz informacje do pliku tekstowego w folderze projektu
+
         self.user_preferences.save_to_file()
 
         QMessageBox.information(self, "Nowy Użytkownik",
@@ -101,26 +101,21 @@ class MainAppWindow(QMainWindow):
         meal_name = self.lineEdit.text()
         nutrients = {'protein': 30, 'carbs': 50, 'fat': 20}
 
-        # Zapis daty
+
         current_date = datetime.now().strftime("%Y-%m-%d")
 
-        # Tutaj możesz wykorzystać funkcje z modułu MealPlan do dodania posiłku
-        # self.add_meal({'name': meal_name, 'nutrients': nutrients})
 
-        # Zapis do pliku
         file_dialog = QFileDialog()
         file_dialog.setFileMode(QFileDialog.AnyFile)
         file_path, _ = file_dialog.getSaveFileName(self, 'Save File', '', 'Text Files (*.txt)')
 
         if file_path:
-            with open(file_path, 'a') as file:  # Otwieramy plik w trybie 'a' (append), aby nie nadpisywać istniejących danych
+            with open(file_path, 'a') as file:
                 file.write(f"{current_date} - {meal_name}: {nutrients}\n")
 
             QMessageBox.information(self, "Zapisano Plan Diety", f"Zapisano plan diety: {meal_name}")
 
     def show_statistics(self):
-        # Tutaj możesz wykorzystać funkcje z modułu NutrientAnalysis do wygenerowania raportu
-        #self.analyze_meal({'name': 'Obiad', 'nutrients': {'protein': 50, 'carbs': 60, 'fat': 30}})
 
         file_dialog = QFileDialog()
         file_dialog.setFileMode(QFileDialog.AnyFile)
@@ -129,10 +124,10 @@ class MainAppWindow(QMainWindow):
             with open(file_path, 'r') as file:
                 content = file.read()
                 QMessageBox.information(self, "Statystyki z pliku", f"Dane z pliku:\n{content}")
-        #self.report_nutrients()
+
         pass
 
     def run(self):
         app = QApplication([])
-        self.show()  # Używamy metody show() z QMainWindow
+        self.show()
         app.exec_()

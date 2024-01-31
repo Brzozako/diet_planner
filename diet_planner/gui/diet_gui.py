@@ -8,9 +8,9 @@ class DietGUI(QMainWindow, MainAppWindow):
         self.setupUi(self)
         self.initialize_modules()
 
-    # Tutaj możesz dodawać dodatkowe metody specyficzne dla interfejsu graficznego, jeśli są potrzebne
+
 
     def run(self):
         app = QApplication([])
-        self.show()  # Używamy metody show() z QMainWindow
+        self.show()
         app.exec_()

@@ -26,7 +26,6 @@ class UserPreferences:
                                 f"Zapisano informacje użytkownika:\n{name}, {weight} kg, Plan: {diet_plan}")
 
     def generate_nutritional_recommendations(self):
-        # Tutaj możesz zaimplementować algorytm generowania zaleceń żywieniowych
-        # na podstawie celów i danych użytkownika
+
         recommendations = "Przykładowe zalecenia żywieniowe"
         QMessageBox.information(None, "Zalecenia Żywieniowe", recommendations)
